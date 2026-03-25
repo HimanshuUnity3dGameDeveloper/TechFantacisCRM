@@ -57,91 +57,88 @@
                     </div>
                 </section>
 
-                <section id="dealer-management" class="module-view hidden">
-                    <div>
-                        <button class="btn_dealer">Add New Dealer</button>
-                    </div>
-                    <div class="dealer_table">
-                        <table class="dealer_content">
-                            <thead>
-                                <tr>
-                                    <th>Dealer Name</th>
-                                    <th>Location</th>
-                                    <th>Stock Level</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="dealer-list-items">
-                                <!-- Dealer data will be populated here -->
-                                 <tr>
-                                    <td>ABC Distributors</td>
-                                    <td>New York</td>
-                                    <td>150 units</td>
-                                    <td><span class="status active">Active</span></td>
-                                 </tr>
-                                 <tr>
-                                    <td>ABC Distributors</td>
-                                    <td>New York</td>
-                                    <td>150 units</td>
-                                    <td><span class="status active">Active</span></td>
-                                 </tr>
-                                 <tr>
-                                    <td>ABC Distributors</td>
-                                    <td>New York</td>
-                                    <td>150 units</td>
-                                    <td><span class="status active">Active</span></td>
-                                 </tr>
-                                 <tr>
-                                    <td>ABC Distributors</td>
-                                    <td>New York</td>
-                                    <td>150 units</td>
-                                    <td><span class="status active">Active</span></td>
-                                 </tr>
-                                 <tr>
-                                    <td>ABC Distributors</td>
-                                    <td>New York</td>
-                                    <td>150 units</td>
-                                    <td><span class="status active">Active</span></td>
-                                 </tr>
-                                 <tr>
-                                    <td>ABC Distributors</td>
-                                    <td>New York</td>
-                                    <td>150 units</td>
-                                    <td><span class="status active">Active</span></td>
-                                 </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <section id="dealer" class="module-view hidden">
+                    <div class="dealer_cards">
+                        <div>
+                            <button class="btn_dealer">Add New Dealer</button>
+                        </div>
+                        <div class="dealer_table">
+                            <table class="dealer_content">
+                                <thead>
+                                    <tr>
+                                        <th>Dealer Name</th>
+                                        <th>Location</th>
+                                        <th>Stock Level</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dealer-list-items">
+                                    <!-- Dealer data will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
 
-                    <div class="dealer-input hidden">
-                        <h2>Register New Dealer</h2>
-                        <label for="dName">Dealer Name</label>
-                        <input type="text" id="dName" placeholder="Dealer Name">
-                        <label for="dLoc">Location</label>
-                        <input type="text" id="dLoc" placeholder="Location">
-                        <button class="btn-submit">Submit</button>
+                        <div class="dealer-input hidden">
+                            <h2>Register New Dealer</h2>
+                            <label for="dName">Dealer Name</label>
+                            <input type="text" id="dName" placeholder="Dealer Name" value="dName">
+                            <label for="dLoc">Location</label>
+                            <input type="text" id="dLoc" placeholder="Location">
+                            <button class="dealer-submit">Submit</button>
+                        </div>
                     </div>
                 </section>
                 
                 <section id="leads" class="module-view hidden">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-lg font-bold">Inbound Leads</h3>
-                        <button class="bg-blue-600 text-white px-4 py-2 rounded">Add New Lead</button>
-                    </div>
-                    <div class="bg-white rounded-lg shadow overflow-hidden">
-                        <table class="w-full text-left">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th class="p-4">Lead Name</th>
-                                    <th class="p-4">Source</th>
-                                    <th class="p-4">Assigned To</th>
-                                    <th class="p-4">Status</th>
-                                    <th class="p-4">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="lead-list-items">
+                    <div class="leads_card">
+                        <div class="leads_header">
+                            <h3>Inbound Leads</h3>
+                            <button class="btn_leads">Add New Lead</button>
+                        </div>
+                        <div class="lead_table">
+                            <table class="lead_content">
+                                <thead>
+                                    <tr>
+                                        <th class="p-4">Lead Name</th>
+                                        <th class="p-4">Source</th>
+                                        <th class="p-4">Assigned To</th>
+                                        <th class="p-4">Status</th>
+                                        <th class="p-4">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lead-list-items">
+                                    <!-- Dealer data will be populated here -->
+                                     <tr>
+                                        <td>Global Tech Corp</td>
+                                        <td>Website</td>
+                                        <td>Sarah Connor</td>
+                                        <td><span>Hot</span></td>
+                                        <td>Edit</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Apex Logistics</td>
+                                        <td>Referral</td>
+                                        <td>John Smith</td>
+                                        <td><span>Warm</span></td>
+                                        <td>Edit</td>
+                                    </tr>
                                 </tbody>
-                        </table>
+                            </table>
+                        </div>
+                        <div class="lead-input">
+                            <h2>Add New Lead</h2>
+                            <label>Lead Name</label>
+                            <input type="text" id="dName" placeholder="Dealer Name" value="dName">
+                            <label>Source</label>
+                            <input type="text" id="source" placeholder="Source" value="source">
+                            <label>Assigned To</label>
+                            <input type="text" id="assignedName" placeholder="Assign Name" value="assignedName">
+                            <label>Source</label>
+                            <input type="text" id="source" placeholder="Source" value="source">
+                            <label>Status</label>
+                            <input type="text" id="sts" placeholder="Status">
+                            <button class="lead-submit">Submit</button>
+                        </div>
                     </div>
                 </section>
             </div>
