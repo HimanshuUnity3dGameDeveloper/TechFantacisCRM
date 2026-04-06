@@ -1,5 +1,43 @@
-const anchor = document.querySelectorAll("li");
+const anchor = document.querySelectorAll("a");
 const module_v = document.querySelectorAll(".module-view");
+const logoutBtn = document.querySelector(".logout-btn");
+
+window.onload = function() {
+    // Get the string from storage and turn it back into an object
+    const storedData = localStorage.getItem('token');
+
+    if (storedData) {
+
+        const val = localStorage.getItem('adminData')
+        const data = JSON.parse(val);
+        console.log(data);
+        // Inject the data into the HTML
+        document.querySelector('#displayAdminName').innerText = `Welcome! ${data.fullname}`;
+        document.querySelector('#displayAdminEmail').innerText = `${data.email}`;
+
+        document.querySelector(".profile-icon").addEventListener("click",()=>{
+            if(document.querySelector(".admin-panel").classList.contains("active")){
+                document.querySelector(".admin-panel").classList.remove("active");
+                return;
+            }else{
+                document.querySelector(".admin-panel").classList.add("active");
+            }
+        })
+    } else {
+        // If someone tries to access dashboard without logging in
+        window.location.href = 'index.html';
+    }  
+
+};
+
+if(logoutBtn){
+    logoutBtn.addEventListener("click", function (){
+        localStorage.removeItem('token');
+        localStorage.removeItem('adminData');
+        document.querySelector(".admin-panel").classList.remove("active");
+        window.location.href = 'index.html';
+    })
+}
 
 document.querySelector(".close_panel").addEventListener("click",()=>{
     document.querySelector(".summer-cyber").classList.add("hidden");
@@ -74,44 +112,88 @@ function loadModule(){
 }
 
 /* Dealer Managements... */
+const dealerForm = document.querySelector(".dealer-submit");
+dealerForm.addEventListener("click", (ev)=>{
+        ev.preventDefault();
+        SaveDealer();
+});
+
+async function SaveDealer()
+{
+    const admindata = JSON.parse(localStorage.getItem("adminData")).admin_id;
+
+    const adminid = parseInt(admindata);
+
+    console.log("Admin ID being used:", adminid);
+    const dealer = {
+        shopname: document.querySelector(`input[name="shop_name"]`).value,
+        Personname: document.querySelector(`input[name="contact_person"]`).value,
+        email: document.querySelector(`input[name="email"]`).value,
+        phone: document.querySelector(`input[name="phone"]`).value,
+        gstno: document.querySelector(`input[name="gst_no"]`).value,
+        address: document.querySelector(`textarea[name="address"]`).value,
+        admin_id: adminid
+    };
+
+    console.log("Payload being sent:", JSON.stringify(dealer));
+
+    try{
+        const response = await fetch('http://localhost:3000/api/dealers',{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(dealer)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert("✅ Dealer saved successfully!");
+        } else {
+            alert("❌ Error saving dealer: " + (result.error || "Unknown Error"));
+        }
+    } catch (error) {
+        console.error("Fetch Error:", error);
+        alert("🔌 Network Error: Check if your Node.js server is running.");
+    }
+}
 
 let leadData=[];
-document.querySelector(".dealer_close").addEventListener("click",()=>{
-    document.querySelector(".dealer-input").classList.add("hidden");
-})
+// document.querySelector(".dealer_close").addEventListener("click",()=>{
+//     document.querySelector(".dealer-input").classList.add("hidden");
+// })
 
-document.querySelector(".btn_dealer").addEventListener("click", ()=>{
-    document.querySelector(".dealer-input").classList.remove("hidden");
-})
+// document.querySelector(".btn_dealer").addEventListener("click", ()=>{
+//     document.querySelector(".dealer-input").classList.remove("hidden");
+// })
 
-document.querySelector(".dealer-submit").addEventListener("click",()=>
-{
-    const get_deal = localStorage.getItem("listdealer");
-    leadData = JSON.parse(get_deal);
+// document.querySelector(".dealer-submit").addEventListener("click",()=>
+// {
+//     const get_deal = localStorage.getItem("listdealer");
+//     leadData = JSON.parse(get_deal);
 
-    const d_name = document.querySelector("#dName");
-    const d_loc = document.querySelector("#dLoc");    
+//     const d_name = document.querySelector("#dName");
+//     const d_loc = document.querySelector("#dLoc");    
 
-    if(!d_name.value || !d_loc.value)
-    {
-        alert("Please fill in all required fields!");
-        return;
-    }
+//     if(!d_name.value || !d_loc.value)
+//     {
+//         alert("Please fill in all required fields!");
+//         return;
+//     }
 
-    const newDealer = {
-        Dname: d_name.value, loc:d_loc.value, stk_lev: 0+" units", sts:"Active"
-    }
+//     const newDealer = {
+//         Dname: d_name.value, loc:d_loc.value, stk_lev: 0+" units", sts:"Active"
+//     }
     
-    leadData.push(newDealer);
+//     leadData.push(newDealer);
 
-    if(!document.querySelector(".dealer-input").classList.contains("hidden")){
-        document.querySelector(".dealer-input").classList.add("hidden");
-    }
+//     if(!document.querySelector(".dealer-input").classList.contains("hidden")){
+//         document.querySelector(".dealer-input").classList.add("hidden");
+//     }
     
-    localStorage.setItem("listdealer", JSON.stringify(leadData));
-    console.log(leadData);
-    getDealer();
-})
+//     localStorage.setItem("listdealer", JSON.stringify(leadData));
+//     console.log(leadData);
+//     getDealer();
+// })
 
 let dealerData = [
     {Dname: "ABC_Constructor", loc:"New Delhi", stk_lev: 150+" units", sts:"Active"},
@@ -482,3 +564,4 @@ function showIncentive(list){
         tableBody.appendChild(tableBox);
     });
 }
+
