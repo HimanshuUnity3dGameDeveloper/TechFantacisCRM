@@ -912,13 +912,4 @@ Backend/node_modules/wrappy/LICENSE
 Backend/node_modules/wrappy/package.json
 Backend/node_modules/wrappy/README.md
 Backend/node_modules/wrappy/wrappy.js
-Frontend/app.js
-Frontend/crm.js
-Frontend/dashboard.html
-Frontend/index.html
-Frontend/log_sign.css
-Frontend/style.css
-Frontend/Login&SignUp/login.html
-Frontend/Login&SignUp/signUp.html
-GIF File/Login.gif
-GIF File/User Avatar.gif
+

@@ -1,0 +1,45 @@
+:root{--primary-gradient: linear-gradient(135deg, #8e2de2, #4a00e0); --bg-dark: #0a192f;--card-bg: #112240;--neon-cyan: #64ffda;--text-main: #ccd6f6;--cyber-neon: #64ffda;--cyber-pink: #f57dff;--cyber-dark: #0a192f;--cyber-surface: #112240;}
+
+@keyframes colorGradient {
+  0% { background: linear-gradient(150deg, white, blue)}
+  25% { background: linear-gradient(150deg, rgb(208, 208, 247), rgb(47, 47, 250))}
+  50% { background: linear-gradient(150deg, rgb(131, 131, 252), rgb(131, 131, 252)); }
+  75% { background: linear-gradient(150deg, rgb(47, 47, 250), rgb(208, 208, 247)); }
+  100% { background: linear-gradient(150deg, blue, white); }
+}
+
+body {margin: 0; background: var(--primary-gradient); box-sizing: border-box; font-family: 'Segoe UI', sans-serif;}
+
+.container{display: grid; place-items: center; width: 100%; height: 100vh; animation: colorGradient 10s linear infinite;}
+
+.login-form{display: flex; border-radius: 25px; width: 900px; height: 550px; box-shadow: 0 4px 8px rgb(92, 209, 238);}
+
+.welcom-kit{ color: white; font-size: 20px; text-align: center; padding: 25px; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--primary-gradient); border-radius: 25px 0 0 25px;}
+
+.login-kit{width: 50%; padding: 25px; background: white; border-radius: 0 25px 25px 0;}
+
+.login-kit h2{text-align: center;}
+
+.header{text-align: center; margin-bottom: 2rem;}
+
+.header h1{font-size: 2rem; font-size: 1.875rem; font-weight: 800; line-height: 2.25rem; margin: 0;}
+
+.header span{color: black; margin-top: 0.5rem;}
+
+.login_page{display: flex; flex-direction: column; gap: 1.5rem;}
+
+.relative{display: flex; gap: 0.5rem; border: 1px solid #233554; padding: 10px; border-radius: 5px; position: relative;}
+
+.relative input{border: none; outline: none; width: 100%;}
+
+button{background: var(--primary-gradient); color: white; border: none; padding: 10px; border-radius: 50px; cursor: pointer; font-weight: bold;}
+
+button:hover{background-color: #7de5ff; transform: scale(1.05);}
+
+#deal_card{background-color: white; border-radius: 8px; display: flex; flex-direction: column; width: 80%; height: auto; padding: 25px; box-shadow: 0 4px 8px rgb(92, 209, 238);}
+
+table{width: 100%; padding-top: 25px;}
+
+thead tr{ display: flex; align-items: center; justify-content: space-between; border: 1px solid gray;}
+
+thead th{width: 100%; border: 1px solid #112240; background-color: var(--cyber-neon);}
